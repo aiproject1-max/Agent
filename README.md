@@ -1000,15 +1000,15 @@ D_{0}(\theta)=\sum_{{\bf x}\subseteq\mathcal{W}}P_{\mathcal{W}}({\bf x})\log\fra
 
 例如，考虑两个材料合成代理，它们的目标是了解感兴趣的无机化合物 
 $\mathrm{CaFe_{2}(PO_{4})_{2}O}$
-是否可合成。这些代理可以预测(1) ${\bf x}_{1}=\{\mathrm{CaFe_{2}(PO_{4})_{2}O}$ 可合成)，以及(2) $\scriptstyle\mathbf{x}_{2}=\{\mathbf{CaFe}_{2}(\mathbf{PO}_{4})_{2}\mathbf{O}$ 不可合成)。实际上，由于 $\mathrm{CaFe_{2}(PO_{4})_{2}O}$ 是一种天然矿物， $\dot{P}_{\mathcal{W}}(\mathbf{x}_{1})=1$ 且 $P_{\mathcal{W}}(\mathbf{x}_{2})=0$ 。然而，这种矿物直到2023年10月4日才被报道[参考文献]，在许多LLM的知识截止日期之后；因此，这些代理缺乏这方面的知识。比较起随机猜测的代理1， $P_{\theta_{1}}(\mathbf{x}_{1})=\bar{\alpha}=P_{\theta_{1}}(\mathbf{x}_{1})=0.5$ ，从而得到 $D_{0}(\theta_{1})=\log2$ 。相比之下，代理2使用第一性原理计算，并发现 $\mathrm{CaFe_{2}(PO_{4})_{2}O}$ （假设结构为xx [引用：Materials Project ID]）是其竞争对手中能量最低的相[参考]，表明其稳定性。因此，代理2预测 $\mathrm{CaFe_{2}(PO_{4})_{2}O}$ 可能可合成，暗示 $P_{\theta_{2}}(\bar{\mathbf{x}}_{1})>0.5>P_{\theta_{2}}(\mathbf{x}_{2})$ 。因此， $\dot{D}_{0}(\dot{\theta}_{2})=-\log P_{\theta_{2}}(\mathbf{x}_{1})<D_{0}(\theta_{1})$ ，这意味着代理2对真实世界有着更准确的理解。
+是否可合成。这些代理可以预测(1) ${\bf x}_{1}=\{\mathrm{CaFe_{2}(PO_{4})_{2}O}$ 可合成)，以及(2) $\scriptstyleX_{2}=\{\mathbf{CaFe}_{2}(\mathbf{PO}_{4})_{2}\mathbf{O}$ 不可合成)。实际上，由于 $\mathrm{CaFe_{2}(PO_{4})_{2}O}$ 是一种天然矿物， $\dot{P}_{\mathcal{W}}(X_{1})=1$ 且 $P_{\mathcal{W}}(X_{2})=0$ 。然而，这种矿物直到2023年10月4日才被报道[参考文献]，在许多LLM的知识截止日期之后；因此，这些代理缺乏这方面的知识。比较起随机猜测的代理1， $P_{\theta_{1}}(X_{1})=\bar{\alpha}=P_{\theta_{1}}(X_{1})=0.5$ ，从而得到 $D_{0}(\theta_{1})=\log2$ 。相比之下，代理2使用第一性原理计算，并发现 $\mathrm{CaFe_{2}(PO_{4})_{2}O}$ （假设结构为xx [引用：Materials Project ID]）是其竞争对手中能量最低的相[参考]，表明其稳定性。因此，代理2预测 $\mathrm{CaFe_{2}(PO_{4})_{2}O}$ 可能可合成，暗示 $P_{\theta_{2}}(\bar{\mathbf{x}}_{1})>0.5>P_{\theta_{2}}(X_{2})$ 。因此， $\dot{D}_{0}(\dot{\theta}_{2})=-\log P_{\theta_{2}}(X_{1})<D_{0}(\theta_{1})$ ，这意味着代理2对真实世界有着更准确的理解。
 
-现在，让我们假设代理已经进行了一些测量，并确定了一些数据点 $x_{i}$ 的具体数值。设 $X_{\mathrm{K}}$ 表示这些已知数据点的子集， $\mathbf{x}_{\mathrm{U}}$ 表示其余未知部分。相应地，我们定义所有已知知识的空间为 $\kappa$ ，所有未知信息的空间为 $\mathcal{U}$ ，满足 $\mathbf{x}_{\mathrm{K}}\subseteq{\mathcal{K}}$ ， $\mathbf{x}_{\mathrm{U}}\subseteq\mathcal{U}$ ，以及 $\kappa\cup\mathcal{U}=\mathcal{W}$ 。例如，在文本生成中，提示文本 $\mathbf{x}_{\mathrm{K}}$ 代表已知信息。然后，语言模型的效率通过其基于 $\mathbf{x}_{\mathrm{K}}$ 生成文本 $\mathbf{x}_{\mathrm{U}}$ 的预测准确性来衡量。更一般地，代理的智能性可通过条件概率分布的相对熵来衡量：
+现在，让我们假设代理已经进行了一些测量，并确定了一些数据点 $x_{i}$ 的具体数值。设 $X_{\mathrm{K}}$ 表示这些已知数据点的子集， $X_{\mathrm{U}}$ 表示其余未知部分。相应地，我们定义所有已知知识的空间为 $\kappa$ ，所有未知信息的空间为 $\mathcal{U}$ ，满足 $X_{\mathrm{K}}\subseteq{\mathcal{K}}$ ， $X_{\mathrm{U}}\subseteq\mathcal{U}$ ，以及 $\kappa\cup\mathcal{U}=\mathcal{W}$ 。例如，在文本生成中，提示文本 $X_{\mathrm{K}}$ 代表已知信息。然后，语言模型的效率通过其基于 $X_{\mathrm{K}}$ 生成文本 $X_{\mathrm{U}}$ 的预测准确性来衡量。更一般地，代理的智能性可通过条件概率分布的相对熵来衡量：
 
  $$  
 D_{\mathrm{K}}(\boldsymbol{\theta},{\bf x}_{\mathrm{K}})=\sum_{{\bf x}\subseteq\mathcal{U}}P_{\mathcal{W}}\left({\bf x}|{\bf x}_{\mathrm{K}}\right)\log\frac{P_{\mathcal{W}}\left({\bf x}|{\bf x}_{\mathrm{K}}\right)}{P_{\boldsymbol{\theta}}\left({\bf x}|{\bf x}_{\mathrm{K}}\right)}
   $$ 
 
-在实践中，代理的所有知识都存储在其记忆 $M_{t}^{\mathrm{mem}}$ 中，即 $\mathbf{x}_{\mathrm{K}}={\boldsymbol{K}}=M_{t}^{\mathrm{mem}}$ ， $\mathcal{U}=\mathcal{W}\setminus M_{t}^{\mathrm{mem}}$ ，我们将代理的智能定义为：
+在实践中，代理的所有知识都存储在其记忆 $M_{t}^{\mathrm{mem}}$ 中，即 $X_{\mathrm{K}}={\boldsymbol{K}}=M_{t}^{\mathrm{mem}}$ ， $\mathcal{U}=\mathcal{W}\setminus M_{t}^{\mathrm{mem}}$ ，我们将代理的智能定义为：
 
  $$  
 I Q_{t}^{\mathrm{agent}}\equiv-D_{\mathrm{K}}(\theta,M_{t}^{\mathrm{mem}})=-\sum_{\mathbf{x}\subseteq\mathcal{U}}P_{\mathcal{W}}(\mathbf{x}|M_{t}^{\mathrm{mem}})\log\frac{P_{\mathcal{W}}(\mathbf{x}|M_{t}^{\mathrm{mem}})}{P_{\theta}(\mathbf{x}|M_{t}^{\mathrm{mem}})}
@@ -1024,19 +1024,19 @@ I Q_{t}^{\mathrm{agent}}\equiv-D_{\mathrm{K}}(\theta,M_{t}^{\mathrm{mem}})=-\sum
 
 智能代理的智能在统计意义上是随着获取知识而不减的函数。粗略地说， $I Q_{t}^{\mathrm{agent}}$  量化了代理获取的知识量以及代理从 $M_{t}^{\mathrm{mem}}$ 中学习后能有效应用该知识的能力。直观地，如果代理在时间 $t$ 获得额外信息，对应于扩大 $M_{t}^{\mathrm{mem}}$ 并缩小 $\mathcal{U}$ ，其智能应该增加。
 
-为了理解这一过程，考虑一个小区域 $\Delta\subseteq{\mathcal{U}}$ ，并研究将来自 $\Delta$ 的数据集 $\mathbf{x}_{\Delta}$ 添加到 $M_{t}^{\mathrm{mem}}$ 的效果。记 $\mathcal{U}=\mathcal{U}^{\prime}\cup\Delta$ ，其中 $\mathcal{U}^{\prime}$ 表示世界的剩余未知部分。时间 $t+1$ 时代理的智能由以下公式给出：
+为了理解这一过程，考虑一个小区域 $\Delta\subseteq{\mathcal{U}}$ ，并研究将来自 $\Delta$ 的数据集 $X_{\Delta}$ 添加到 $M_{t}^{\mathrm{mem}}$ 的效果。记 $\mathcal{U}=\mathcal{U}^{\prime}\cup\Delta$ ，其中 $\mathcal{U}^{\prime}$ 表示世界的剩余未知部分。时间 $t+1$ 时代理的智能由以下公式给出：
 
  $$  
-I Q_{t+1}^{\mathrm{agent}}\equiv-D_{\mathrm{K}}(\theta,M_{t}^{\mathrm{mem}}\mathbf{x}_{\Delta})=-\sum_{\mathbf{x}^{\prime}\subseteq\boldsymbol{U}^{\prime}}P_{\mathcal{W}}(\mathbf{x}^{\prime}|M_{t}^{\mathrm{mem}}\mathbf{x}_{\Delta})\log\frac{P_{\mathcal{W}}(\mathbf{x}^{\prime}|M_{t}^{\mathrm{mem}}\mathbf{x}_{\Delta})}{P_{\theta}(\mathbf{x}^{\prime}|M_{t}^{\mathrm{mem}}\mathbf{x}_{\Delta})}
+I Q_{t+1}^{\mathrm{agent}}\equiv-D_{\mathrm{K}}(\theta,M_{t}^{\mathrm{mem}}X_{\Delta})=-\sum_{\mathbf{x}^{\prime}\subseteq\boldsymbol{U}^{\prime}}P_{\mathcal{W}}(\mathbf{x}^{\prime}|M_{t}^{\mathrm{mem}}X_{\Delta})\log\frac{P_{\mathcal{W}}(\mathbf{x}^{\prime}|M_{t}^{\mathrm{mem}}X_{\Delta})}{P_{\theta}(\mathbf{x}^{\prime}|M_{t}^{\mathrm{mem}}X_{\Delta})}
   $$ 
 
-直接比较 $I Q_{t}^{\mathrm{agent}}$ 和 $I Q_{t+1}^{\mathrm{agent}}$ 是具有挑战性的，因为 $I Q_{t+1}^{\mathrm{agent}}$ 通过对 $\mathbf{x}_{\Delta}$ 进行概率 $P_{\mathcal{W}}(\mathbf{x}_{\Delta}|M_{t}^{\mathrm{mem}})$ 的平均化。这个期望代表了在给定 $M_{t}^{\mathrm{mem}}$ 中的先前知识的情况下，通过测量 $\Delta$ 所获得的平均知识量。我们得到：
+直接比较 $I Q_{t}^{\mathrm{agent}}$ 和 $I Q_{t+1}^{\mathrm{agent}}$ 是具有挑战性的，因为 $I Q_{t+1}^{\mathrm{agent}}$ 通过对 $X_{\Delta}$ 进行概率 $P_{\mathcal{W}}(X_{\Delta}|M_{t}^{\mathrm{mem}})$ 的平均化。这个期望代表了在给定 $M_{t}^{\mathrm{mem}}$ 中的先前知识的情况下，通过测量 $\Delta$ 所获得的平均知识量。我们得到：
 
  $$  
 \begin{array}{r}{\displaystyle\sum_{\mathbf{x}\subseteq\Delta}P_{\mathcal{W}}(\mathbf{x}|M_{t}^{\mathrm{mem}})I Q_{t+1}^{\mathrm{agent}}=-\sum_{\mathbf{x}^{\prime}\subseteq\mathcal{U}^{\prime},\mathbf{x}\subseteq\Delta}P_{\mathcal{W}}(\mathbf{x}^{\prime}\mathbf{x}|M_{t}^{\mathrm{mem}})\log\frac{P_{\mathcal{W}}(\mathbf{x}^{\prime}|M_{t}^{\mathrm{mem}}\mathbf{x})}{P_{\theta}(\mathbf{x}^{\prime}|M_{t}^{\mathrm{mem}}\mathbf{x})}}\\ {=I Q_{t}^{\mathrm{agent}}+\displaystyle\sum_{\mathbf{x}\subseteq\Delta}P_{\mathcal{W}}(\mathbf{x}|M_{t}^{\mathrm{mem}})\log\frac{P_{\mathcal{W}}(\mathbf{x}|M_{t}^{\mathrm{mem}})}{P_{\theta}(\mathbf{x}|M_{t}^{\mathrm{mem}})}}\end{array}
   $$ 
 
-第二项是 $\mathbf{x}_{\Delta}$ 在 $M_{t}^{\mathrm{mem}}$ 条件概率分布的相对熵，始终为非负。因此，平均而言，随着 $M_{t}^{\mathrm{mem}}$ 随时间获得新知识， $I Q_{t}^{\mathrm{agent}}$ 是不减的。需要注意的是， $I Q_{t+1}^{\mathrm{agent}}$ 可以在 $M_{t}^{\mathrm{wm}}$ 内通过 $\theta$ 进一步改进。
+第二项是 $X_{\Delta}$ 在 $M_{t}^{\mathrm{mem}}$ 条件概率分布的相对熵，始终为非负。因此，平均而言，随着 $M_{t}^{\mathrm{mem}}$ 随时间获得新知识， $I Q_{t}^{\mathrm{agent}}$ 是不减的。需要注意的是， $I Q_{t+1}^{\mathrm{agent}}$ 可以在 $M_{t}^{\mathrm{wm}}$ 内通过 $\theta$ 进一步改进。
 
 有趣的是，时间 $t$ 的智能预期增益取决于实际分布 $P_{\mathcal{W}}(\mathbf{x}|M_{t}^{\mathrm{mem}})$ 与模型预测分布 $P_{\theta}(\mathbf{x}|M_{t}^{\mathrm{mem}})$ 之间的差异。换句话说，在图12.1中，智能增长的速率在新的测量结果更加意外时更高。这一观察将科学家代理（859）确定为一种特殊类型的好奇驱动代理（869），其优先考虑探索而不是开发，以拓展知识边界，深入理解自然。与利用现有知识实现预定义目标的代理不同，好奇驱动代理可以在没有外在奖励的情况下学习（详情见第5.3节），从而实现超出人类规划搜索空间的发现，并揭示未开发领域的知识。这一潜力也强调了装备好奇驱动代理基本感知和行动工具的重要性，这些工具可以被转移到探索新知识领域。
 
@@ -1064,7 +1064,7 @@ D_{\mathrm{K},\Theta}^{\mathrm{min}}(M_{t}^{\mathrm{mem}})\equiv D_{\mathrm{K}}(
 
 ## 12.2 代理-知识交互
 
-典型的科学知识形式包括观察知识（例如实验测量、计算结果）、方法论知识（例如实验方法、计算技术、协议）和伦理知识（例如理论、法则、预测模型）。只要这些知识形式包含以影响未知信息概率分布  $P_{\theta}\left(\mathbf{x}_{\mathrm{U}}|M_{t}^{\mathrm{mem}}\right)$ 、减少  $D_{\mathrm{K}}(\theta,M_{t}^{\mathrm{mem}})$ ，并促进决策的方式处理的数据和信息，它们就可以促进科学理解。
+典型的科学知识形式包括观察知识（例如实验测量、计算结果）、方法论知识（例如实验方法、计算技术、协议）和伦理知识（例如理论、法则、预测模型）。只要这些知识形式包含以影响未知信息概率分布  $P_{\theta}\left(X_{\mathrm{U}}|M_{t}^{\mathrm{mem}}\right)$ 、减少  $D_{\mathrm{K}}(\theta,M_{t}^{\mathrm{mem}})$ ，并促进决策的方式处理的数据和信息，它们就可以促进科学理解。
 
 原则上，已经证明外部科学知识对改善推理和决策中的代理性能是有用的。然而，本调查的范围在于代理如何能够自主地发现和利用知识来增强自身。科学知识发现工作流通常涉及假设生成、协议规划、实验和计算、数据分析、推导含义，并修订假设，通常作为迭代循环的一部分。一个能够感知、学习、推理和行动的代理有潜力以自主方式推动这种工作流，例如通过使用应用程序编程接口（API）与物理仪器进行交互以获取科学知识并迭代增强其知识库（图12.2）。代理将利用获取的知识来更新其心智状态  $M_{t}$ ，以在与世界  $\mathcal{W}$  互动时做出更好的决策。接下来，我们将重点介绍代理发现科学知识并增强自身的三种情景。
 
@@ -1090,7 +1090,7 @@ Hysmith等人[886]发表了一篇观点文章，强调了奖励函数设计在�
 
 ### 12.2.2 协议规划与工具创新
 
-在能够规划实验方案并优化工具使用的能力下，代理程序能够在自主发现循环中解决复杂的科学难题。正如第9.4节中介绍的那样，代理程序可以系统地评估和完善其选择、调用和整合可用工具的方法，甚至开发出符合特定任务需求的新工具。虽然优化的方案和工具使用并不能直接降低  $\bar{D}_{\mathrm{K}}(\theta,M_{t}^{\mathrm{mem}})$ ，但它们提高了执行效率和效果，从而加速未知信息的概率分布  $\dot{P}_{\theta}\left(\mathbf{x}_{\mathrm{U}}|M_{t}^{\mathrm{mem}}\right)$  的精炼，进而加快知识发现。在这种情况下，代理程序利用推理功能  $\mathrm{R}$  将其不断更新的新知识反映在心智状态  $M_{t}$  中，转化为更有效和更快的假设检验的现实行动  $a_{t}$ （见图12.2）。
+在能够规划实验方案并优化工具使用的能力下，代理程序能够在自主发现循环中解决复杂的科学难题。正如第9.4节中介绍的那样，代理程序可以系统地评估和完善其选择、调用和整合可用工具的方法，甚至开发出符合特定任务需求的新工具。虽然优化的方案和工具使用并不能直接降低  $\bar{D}_{\mathrm{K}}(\theta,M_{t}^{\mathrm{mem}})$ ，但它们提高了执行效率和效果，从而加速未知信息的概率分布  $\dot{P}_{\theta}\left(X_{\mathrm{U}}|M_{t}^{\mathrm{mem}}\right)$  的精炼，进而加快知识发现。在这种情况下，代理程序利用推理功能  $\mathrm{R}$  将其不断更新的新知识反映在心智状态  $M_{t}$  中，转化为更有效和更快的假设检验的现实行动  $a_{t}$ （见图12.2）。
 
 安排和协调选择和重组现有工具是至关重要的。科学实验通常依赖于各种仪器来分析反应产物，决策很少仅依赖于单一测量。在不浪费资源和时间的情况下有效利用必要的仪器，需要代理程序学会以一种整合和适应的方式使用工具。Dai等人设计了一个模块化工作流程，集成了移动机器人、自动合成平台和各种表征仪器，用于自主发现。他们在结构多样化化学、超分子主客体化学和光化学合成三个领域展示了这一系统。移动机器人遵循合成-分析-决策循环，模仿人类实验策略，自主确定后续工作流程步骤。它选择适当的仪器，例如Chemspeed ISynth平台用于合成，液相色谱-质谱仪（UPLC-MS）用于测量与化学峰信号相对应的质谱，以及台式核磁共振谱仪（NMR）用于跟踪起始物到产物的化学转化过程。
 
@@ -2753,15 +2753,15 @@ AI代理的内在安全性涉及到代理的内部架构和功能中的漏洞。
 
 越狱行为绕过了嵌入在人工智能代理中的安全防护措施，迫使它们的决策过程可能会带有有害、不道德或偏见[233]。这些攻击利用了LLM的帮助性和安全约束之间固有的张力[1134]。
 
-形式化。为了形式化表征越狱行为带来的风险，我们分析了自回归LLM输出的概率分布。对于一个自回归LLM，给定输入序列 ${\mathbf x}_{1:n}$ ，生成输出序列 $\mathbf{y}=\mathbf{x}_{n+1:n+m}$ 的概率建模为：
+形式化。为了形式化表征越狱行为带来的风险，我们分析了自回归LLM输出的概率分布。对于一个自回归LLM，给定输入序列 ${\mathbf x}_{1:n}$ ，生成输出序列 $\mathbf{y}=X_{n+1:n+m}$ 的概率建模为：
 
  $$  
-p(\mathbf{y}|\mathbf{x}_{1:n})=\prod_{i=1}^{m}p(\mathbf{x}_{n+i}|\mathbf{x}_{1:n+i-1})
+p(\mathbf{y}|X_{1:n})=\prod_{i=1}^{m}p(X_{n+i}|X_{1:n+i-1})
   $$ 
 
 其中 $m$ 表示生成序列的总长度。越狱攻击通常涉及向输入序列引入微妙的扰动，记为 $\tilde{\mathbf{x}}_{1:n}$ ，这些扰动会误导模型产生与期望行为偏离的输出。
 
-通过对其对齐奖励 $\mathcal{R}^{*}(\mathbf{y}|\mathbf{x}_{1:n},\mathcal{A})$ 的影响来评估越狱攻击，该奖励衡量模型输出与一组人类定义的安全或道德准则 $\mathcal{A}$ 的接近程度。对手的目标是最小化这一奖励，形式化表示为：
+通过对其对齐奖励 $\mathcal{R}^{*}(\mathbf{y}|X_{1:n},\mathcal{A})$ 的影响来评估越狱攻击，该奖励衡量模型输出与一组人类定义的安全或道德准则 $\mathcal{A}$ 的接近程度。对手的目标是最小化这一奖励，形式化表示为：
 
  $$  
 \mathbf{y}^{\star}=\underset{\mathbf{y}}{\arg\operatorname*{min}}\mathcal{R}^{*}(\mathbf{y}|\tilde{\mathbf{x}}_{1:n},\mathcal{A}))
@@ -2797,22 +2797,22 @@ p(\mathbf{y}|\mathbf{x}_{1:n})=\prod_{i=1}^{m}p(\mathbf{x}_{n+i}|\mathbf{x}_{1:n
 
 提示注入攻击通过在输入提示中嵌入恶意指令来操纵LLMs的行为，从而劫持模型的预期功能并将其重定向到攻击者所期望的操作[1130]。与绕过安全指南的越狱不同，提示注入利用模型无法区分原始上下文和外部附加指令的能力。这种漏洞受到文本输入的开放性、缺乏健壮的过滤机制以及假设所有输入都是可信的的影响，使LLMs特别容易受到对抗性内容的影响[149]。即使是微小的恶意修改也可能显著改变生成的输出。
 
-形式化。在提示注入中，对手附加或嵌入恶意提示组件到原始输入中，从而劫持模型的预期行为。假设原始输入序列表示为 $\mathbf{x}_{1:n}$ ， $\mathbf{p}$ 表示要注入的对抗性提示。有效的（注入的）输入变为： $\mathbf{x}^{\prime}=\mathbf{x}_{1:n}\oplus\mathbf{p}$ ，其中运算符 $\oplus$ 表示恶意提示与原始输入的连接或整合。然后，在注入提示下的自回归生成过程如下给出：
+形式化。在提示注入中，对手附加或嵌入恶意提示组件到原始输入中，从而劫持模型的预期行为。假设原始输入序列表示为 $X_{1:n}$ ， $\mathbf{p}$ 表示要注入的对抗性提示。有效的（注入的）输入变为： $\mathbf{x}^{\prime}=X_{1:n}\oplus\mathbf{p}$ ，其中运算符 $\oplus$ 表示恶意提示与原始输入的连接或整合。然后，在注入提示下的自回归生成过程如下给出：
 
  $$  
-p(\mathbf{y}|\mathbf{x}^{\prime})=\prod_{i=1}^{m}p(\mathbf{y}_{i}\mid\mathbf{x}_{1:n+i-1}^{\prime})
+p(\mathbf{y}|\mathbf{x}^{\prime})=\prod_{i=1}^{m}p(\mathbf{y}_{i}\midX_{1:n+i-1}^{\prime})
   $$ 
 
 假设对齐奖励 $\mathcal{R}^{*}(\cdot,\mathcal{A})$ 衡量输出符合人类定义的安全或伦理准则集合 $\mathcal{A}$ 的程度，对手的目标是迫使模型生成最小化该奖励的输出：
 
  $$  
-\mathbf{y}^{\star}=\underset{\mathbf{y}}{\arg\operatorname*{min}}\ \mathcal{R}^{*}\left(\mathbf{y}\mid\mathbf{x}_{1:n}\oplus\mathbf{p},\mathcal{A}\right).
+\mathbf{y}^{\star}=\underset{\mathbf{y}}{\arg\operatorname*{min}}\ \mathcal{R}^{*}\left(\mathbf{y}\midX_{1:n}\oplus\mathbf{p},\mathcal{A}\right).
   $$ 
 
 相应地，损失函数被定义为：
 
  $$  
-\begin{array}{r}{\mathcal{L}^{i n j e c t}(\mathbf{p})=-\log p\big(\mathbf{y}^{\star}\mid\mathbf{x}_{1:n}\oplus\mathbf{p}\big).}\end{array}
+\begin{array}{r}{\mathcal{L}^{i n j e c t}(\mathbf{p})=-\log p\big(\mathbf{y}^{\star}\midX_{1:n}\oplus\mathbf{p}\big).}\end{array}
   $$ 
 
 然后通过求解得到最佳提示：
@@ -2841,7 +2841,7 @@ p(\mathbf{y}|\mathbf{x}^{\prime})=\prod_{i=1}^{m}p(\mathbf{y}_{i}\mid\mathbf{x}_
 
 幻觉指的是LLM倾向于生成事实不正确、荒谬或不符合提供的上下文的输出[l161]。虽然并非总是恶意的，但幻觉可能会损害代理的可靠性并导致有害后果[1163]。如图18.4所示，幻觉源于两种情况：（1）知识冲突，即输出与已建立事实相矛盾，以及（2）上下文冲突，即与提供的上下文不一致导致不连贯性。
 
-形式化。考虑一个输入序列 $\mathbf{x}_{1:n}$ ，其中每个标记被嵌入到一个 $d_{e}$ 维空间中，表示为 $e_{x_{i}}\in\mathbb{R}^{d_{e}}$ 。计算标记 $i$ 和 $j$ 之间的注意力分数如下：
+形式化。考虑一个输入序列 $X_{1:n}$ ，其中每个标记被嵌入到一个 $d_{e}$ 维空间中，表示为 $e_{x_{i}}\in\mathbb{R}^{d_{e}}$ 。计算标记 $i$ 和 $j$ 之间的注意力分数如下：
 
  $$  
 A_{i j}=\frac{\exp\left((\mathrm{W}_{Q}e_{x_{i}})^{\mathrm{T}}(\mathrm{W}_{K}e_{x_{j}})\right)}{\sum_{t=1}^{n}\exp\left((\mathrm{W}_{Q}e_{x_{i}})^{\mathrm{T}}(\mathrm{W}_{K}e_{x_{t}})\right)}
@@ -2911,7 +2911,7 @@ A_{i j}^{\Delta}=\frac{\exp\left((\mathrm{W}_{Q}\tilde{e}_{x_{i}})^{\mathrm{T}}(
 
 毒化攻击通过在训练或运行时引入恶意数据来破坏LLMs，从而微妙地改变它们的行为。这些攻击可能造成长期损害，因为它们破坏了LLMs的基本过程，使其难以检测。
 
-形式化。毒化攻击通过污染训练数据来破坏LLMs的完整性。设数据集 $\mathcal{D}=\{(\mathbf{x}_{i},\mathbf{y}_{i})\}_{i=1}^{N}$ ，对于其中的一部分引入扰动 $\delta_{i}$ ，得到扰动后的数据集 $\tilde{\mathcal{D}}=\{(\mathbf{x}_{i}+\delta_{i},\mathbf{y}_{i})\}_{i=1}^{N}$ 。
+形式化。毒化攻击通过污染训练数据来破坏LLMs的完整性。设数据集 $\mathcal{D}=\{(X_{i},\mathbf{y}_{i})\}_{i=1}^{N}$ ，对于其中的一部分引入扰动 $\delta_{i}$ ，得到扰动后的数据集 $\tilde{\mathcal{D}}=\{(X_{i}+\delta_{i},\mathbf{y}_{i})\}_{i=1}^{N}$ 。
 
 在训练过程中，通过最小化损失函数 $\mathcal{L}$ 来学习模型参数 $\theta$ ，以适应被毒化的数据集：
 
@@ -2955,7 +2955,7 @@ A_{i j}^{\Delta}=\frac{\exp\left((\mathrm{W}_{Q}\tilde{e}_{x_{i}})^{\mathrm{T}}(
 
 成员推断攻击。成员推断攻击试图确定特定数据点是否是人工智能代理的训练集的一部分。例如，攻击者可能会尝试验证患者的病历是否包含在医疗聊天机器人的训练数据中。
 
-设训练数据集为： $\mathcal{D}=\{(\mathbf{x}_{i},\mathbf{y}_{i})\}_{i=1}^{N}$ 。假设存在一个函数 $g(\mathbf{x};\theta)\in[0,1]$ ，用于估计给定输入 $\mathbf{x}$ 是否包含在 $\mathcal{D}$ 中的概率。攻击者可以通过检查 $g(\mathbf{x};\theta)>\eta$ 来推断成员身份，其中 $\eta$ 是预先确定的阈值。较高的 $g(\mathbf{x};\theta)$ 值表明模型在训练过程中很可能记住了 $\mathbf{x}$ 。
+设训练数据集为： $\mathcal{D}=\{(X_{i},\mathbf{y}_{i})\}_{i=1}^{N}$ 。假设存在一个函数 $g(\mathbf{x};\theta)\in[0,1]$ ，用于估计给定输入 $\mathbf{x}$ 是否包含在 $\mathcal{D}$ 中的概率。攻击者可以通过检查 $g(\mathbf{x};\theta)>\eta$ 来推断成员身份，其中 $\eta$ 是预先确定的阈值。较高的 $g(\mathbf{x};\theta)$ 值表明模型在训练过程中很可能记住了 $\mathbf{x}$ 。
 
 MIA的早期研究证明了这些攻击在机器学习模型中的可行性。Carlini等人开发了一种“测试方法”，使用“canary”序列来量化神经网络意外泄露其训练时学习到的罕见、机密信息的风险。近期的进展提高了攻击的效果。例如，Choquette等人利用仅标签的成员推断攻击利用线性探查和内部模型状态来增强推断准确性。PETAL引入了针对预训练LLMs的第一个仅标签成员推断攻击，通过利用标记级语义相似性来近似输出概率。其他技术，如自提示校准，使这些攻击在实际部署中更加实用。MIA开发了一种新的、更强大的攻击（LiRA）来测试“成员推断”，即当某人可以确定特定个人的数据是否用于训练机器学习模型，即使他们只看到模型的预测结果。He等人提出了一种计算效率高的成员推断攻击，通过重新利用原始成员得分来减轻困难校准的错误，其性能与更复杂的攻击相媲美。此外，Hu等人回顾和分类了关于机器学习模型的成员推断攻击的现有研究，提供了关于攻击和防御策略的见解。
 
